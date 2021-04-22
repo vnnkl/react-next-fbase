@@ -43,9 +43,23 @@ export async function getStaticPaths(){
 
 
 export default function PostPage({ }) {
-  return (
-    <main>
 
+  const postRef = firestore.doc(props.path);
+  const [realTimePost] = useDocumentData(postRef);
+
+  const post = realTimePost || props.post;
+
+  return (
+    <main className={styles.container}>
+      <section>
+        <PostContent post={post}/>
+      </section>
+
+      <aside className={'card'}>
+        <p>
+          <strong>{post.heartCount || 0} ❤️</strong>
+        </p>
+      </aside>
 
 
     </main>
