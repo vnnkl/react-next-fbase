@@ -22,7 +22,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-, "pages/enter.js", "pages/index.js", "pages/admin/index.js"  ],
+, "pages/enter.js", "pages/index.js",
+    "pages/admin/index"
+  ],
   "exclude": [
     "node_modules"
   ]
