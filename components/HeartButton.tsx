@@ -1,15 +1,20 @@
-import {firestore, auth, increment} from "../lib/firebase";
+import {auth, firestore, increment} from "../lib/firebase";
 import {useDocument} from "react-firebase-hooks/firestore";
+import {DocumentReference} from "@firebase/firestore-types";
+
 
 // allows user to heart or like a post
-export default function Heart({ postRef }) {
+export default function Heart({ postRef } : {postRef: DocumentReference}) {
     //Listen to heart document for currently logged in user
+    // @ts-ignore
     const heartRef = postRef.collection('hearts').doc(auth.currentUser.uid);
     const [heartDoc] = useDocument(heartRef);
 
     // create a user to post relationship
     const addHeart = async () => {
 
+        // AuthCheck takes care
+        // @ts-ignore
         const uid = auth.currentUser.uid;
         const batch = firestore.batch();
 

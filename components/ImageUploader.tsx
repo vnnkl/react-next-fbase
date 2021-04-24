@@ -12,12 +12,13 @@ export default function ImageUploader() {
 
 
     // Creates a Firebase Upload Task
-    const uploadFile = async (e) => {
+    const uploadFile = async (e: { target: { files: Iterable<unknown> | ArrayLike<unknown>; }; }) => {
         // Get the File
         const file = Array.from(e.target.files)[0];
         const extension = file.type.split('/')[1];
 
         //Makes reference to the storage bucket location
+        // @ts-ignore
         const ref = storage.ref(`uploads/${auth.currentUser.uid}/${Date.now()}.${extension}`);
         setUploading(true);
 
