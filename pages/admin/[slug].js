@@ -3,6 +3,7 @@ import MetaTags from "../../components/Metatags";
 import AuthCheck from "../../components/Authcheck";
 import {useRouter} from "next/router";
 import {auth, firestore, serverTimestamp} from "../../lib/firebase";
+import ImageUploader from "../../components/ImageUploader";
 import {useForm} from "react-hook-form";
 import ReactMarkdown from 'react-markdown';
 import {useState} from "react";
@@ -80,6 +81,9 @@ function PostForm({defaultValues, postRef, preview}) {
                 </div>
             )}
             <div className={preview ? styles.hidden : styles.controls }>
+
+                <ImageUploader />
+
                 <textarea name='content' ref={register({
                     maxLength: {value: 20000, message: 'content is too long'},
                     minLength: {value: 10, message: 'content is too short'},
