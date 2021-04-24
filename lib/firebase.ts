@@ -43,3 +43,23 @@ export const serverTimestamp = firebase.firestore.FieldValue.serverTimestamp;
 export const STATE_CHANGED = firebase.storage.TaskEvent.STATE_CHANGED;
 export const firestore = firebase.firestore();
 export const storage = firebase.storage();
+
+
+export interface PostType {
+    username:   string;
+    slug:       string;
+    content:    string;
+    published:  any[];
+    createdAt:  AtedAt|number;
+    heartCount: number;
+    title:      string;
+    uid:        string;
+    updatedAt:  AtedAt;
+}
+
+export interface AtedAt {
+    seconds:     number;
+    nanoseconds: number;
+    toDate(): string;
+    toISOString(): string;
+}

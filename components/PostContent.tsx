@@ -1,8 +1,11 @@
 import Link from 'next/link';
 import ReactMarkdown from "react-markdown";
-
+import {PostType} from '../lib/firebase'
 // UI component for main post component
-export default function PostContent({post}) {
+export default function PostContent(wrappedPost: PostType) {
+
+    // it's nested post.post, still a todo
+    const post = wrappedPost.post;
 
     const createdAt = typeof post?.createdAt === 'number' ? new Date(post.createdAt) : post.createdAt.toDate();
 
