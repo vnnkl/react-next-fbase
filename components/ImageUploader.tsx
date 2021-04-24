@@ -12,9 +12,10 @@ export default function ImageUploader() {
 
 
     // Creates a Firebase Upload Task
-    const uploadFile = async (e: { target: { files: Iterable<unknown> | ArrayLike<unknown>; }; }) => {
+    const uploadFile = async (e: any) => {
         // Get the File
         const file = Array.from(e.target.files)[0];
+        // @ts-ignore
         const extension = file.type.split('/')[1];
 
         //Makes reference to the storage bucket location
