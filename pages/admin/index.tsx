@@ -13,7 +13,7 @@ import AuthCheck from "../../components/Authcheck";
 export default function AdminPostsPage( props ) {
   return (
     <main>
-        <AuthCheck>
+        <AuthCheck fallback={''}>
         <h1>Admin posts</h1>
             <PostList/>
             <CreateNewPost/>

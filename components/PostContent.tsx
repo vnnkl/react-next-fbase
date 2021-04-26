@@ -17,9 +17,11 @@ export default function PostContent(wrappedPost: PostType) {
                 <Link href={`/${post.username}/`}>
                     <a className={'text-info'}>@{post.username}</a>
                 </Link>{'  '}
-                on {createdAt.toISOString()}
+                on {(typeof createdAt)=='string' ? createdAt : (createdAt as Date).toISOString()}
             </span>
-            <ReactMarkdown> {post?.content} </ReactMarkdown>
+            <ReactMarkdown>
+                {post.content}
+            </ReactMarkdown>
         </div>
     )
 

@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import React, {useState} from 'react';
 
 import {auth, storage, STATE_CHANGED } from "../lib/firebase";
 import Loader from "./Loader";
@@ -10,9 +10,8 @@ export default function ImageUploader() {
     const [progress, setProgress] = useState(0);
     const [downloadURL, setDownloadURL] = useState(null);
 
-
     // Creates a Firebase Upload Task
-    const uploadFile = async (e: any) => {
+    const uploadFile = async (e: React.ChangeEvent<HTMLInputElement>) => {
         // Get the File
         const file = Array.from(e.target.files)[0];
         // @ts-ignore
@@ -30,7 +29,7 @@ export default function ImageUploader() {
         task.on(STATE_CHANGED, (snapshot) => {
             // calculate percentage
             const pct = ((snapshot.bytesTransferred / snapshot.totalBytes) * 100).toFixed(0);
-            setProgress(pct);
+            setProgress(Number(pct));
 
             // Get downloadURL after task resolves (this is not a native Promise)
             task.then((d) => ref.getDownloadURL())

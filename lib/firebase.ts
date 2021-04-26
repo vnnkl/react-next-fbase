@@ -50,15 +50,17 @@ export const storage = firebase.storage();
 
 
 export interface PostType {
-    username:   string;
-    slug:       string;
-    content:    string;
-    published:  any[];
-    createdAt:  AtedAt|number;
-    heartCount: number;
-    title:      string;
-    uid:        string;
-    updatedAt:  AtedAt;
+    post: {
+        username: string;
+        slug: string;
+        content: string;
+        published: any[];
+        createdAt: AtedAt | number;
+        heartCount: number;
+        title: string;
+        uid: string;
+        updatedAt: AtedAt;
+    }
 }
 
 export interface AtedAt {
