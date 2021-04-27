@@ -34,8 +34,7 @@ export default function Home(props) {
             .orderBy('createdAt', 'desc')
             .startAfter(cursor)
             .limit(LIMIT);
-
-        const newPosts = (await query.get()).docs.map(doc => doc.data);
+        const newPosts = queryResult.docs.map((doc) => doc.data());
 
         setPosts(posts.concat(newPosts));
         setLoading(false);
