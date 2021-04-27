@@ -25,7 +25,7 @@ export default function Home(props) {
     const getMorePosts = async () => {
         setLoading(true);
         const last = posts[posts.length - 1];
-        console.log({posts},{last});
+
         const cursor = typeof last.createdAt === 'number' ? fromMillis(last.createdAt) : last.createdAt;
 
         const query = firestore

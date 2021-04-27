@@ -52,8 +52,6 @@ export default function PostPage(props) {
 
   const post = realTimePost || props.post;
 
-  console.log('post in slug\n', post);
-
   return (
     <main className={styles.container}>
       <section>
