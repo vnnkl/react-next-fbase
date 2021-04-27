@@ -25,7 +25,6 @@ export default function Home(props) {
     const getMorePosts = async () => {
         setLoading(true);
         const last = posts[posts.length - 1];
-
         const cursor = typeof last.createdAt === 'number' ? fromMillis(last.createdAt) : last.createdAt;
 
         const query = firestore
@@ -34,7 +33,7 @@ export default function Home(props) {
             .orderBy('createdAt', 'desc')
             .startAfter(cursor)
             .limit(LIMIT);
-        const newPosts = queryResult.docs.map((doc) => doc.data());
+        const newPosts = (await query.get()).docs.map((doc) => doc.data());
 
         setPosts(posts.concat(newPosts));
         setLoading(false);
