@@ -4,7 +4,7 @@ import 'firebase/firestore'
 import 'firebase/storage'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDQCjdYHZQd-k-_zJkh-rZEI6MYTct9eYQ",
+    apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
     authDomain: "react-next-fbase.firebaseapp.com",
     projectId: "react-next-fbase",
     storageBucket: "react-next-fbase.appspot.com",
@@ -13,6 +13,7 @@ const firebaseConfig = {
     measurementId: "G-0D3MVLXZRW"
 }
 
+console.log(process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
 if (!firebase.apps.length){
     firebase.initializeApp(firebaseConfig);
 }
